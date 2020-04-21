@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: test-app
+  name: demo-app
   labels:
     app: vault-agent-demo
 spec:
@@ -13,12 +13,12 @@ spec:
     metadata:
       annotations:
         vault.hashicorp.com/agent-inject: "true"
-        vault.hashicorp.com/agent-inject-secret-helloworld: "test/helloworld"
-        vault.hashicorp.com/role: "myapp"
+        vault.hashicorp.com/agent-inject-secret-helloworld: "demo/test"
+        vault.hashicorp.com/role: "demoapp"
       labels:
         app: vault-agent-demo
     spec:
-      serviceAccountName: test-app
+      serviceAccountName: demo-app
       containers:
       - name: app
         image: jweissig/app:0.0.1
@@ -26,6 +26,6 @@ spec:
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: test-app
+  name: demo-app
   labels:
     app: vault-agent-demo
