@@ -22,6 +22,14 @@ spec:
       containers:
       - name: app
         image: jweissig/app:0.0.1
+        volumeMounts:
+        - name: test
+          mountPath: "/etc/foo"
+          readOnly: true
+      volumes:
+      - name: test
+        secret:
+          secretName: test-secret
 ---
 apiVersion: v1
 kind: ServiceAccount
